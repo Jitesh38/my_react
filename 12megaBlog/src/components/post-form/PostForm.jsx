@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Input, Button, Select ,RTE} from "../index";
+import { Input, Button, Select, RTE } from "../index";
 import appwriteService from "../../appwrite/config";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -17,7 +17,7 @@ function PostForm({ post }) {
     });
 
   const navigate = useNavigate();
-  const userData = useSelector(state => state.auth.userData);
+  const userData = useSelector((state) => state.auth.userData);
 
   const submit = async (data) => {
     if (post) {
@@ -42,8 +42,12 @@ function PostForm({ post }) {
         // data.featuredImage = fileId;
         console.log(data);
         console.log(userData);
-        
-        const dbPost = await appwriteService.createPost({ ...data,featuredimage:fileId, userid: userData.$id });
+
+        const dbPost = await appwriteService.createPost({
+          ...data,
+          featuredimage: fileId,
+          userid: userData.$id,
+        });
         // const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id });
         if (dbPost) {
           navigate(`/post/${dbPost.$id}`);
@@ -54,11 +58,8 @@ function PostForm({ post }) {
 
   const slugTransform = useCallback((value) => {
     if (value && typeof value === "string") {
-      return value
-        .trim()
-        .toLowerCase()
-        .replace(/\s/g, "-");
-        // .replace(/^[a-zA-Z\d\s]+/g, "-")
+      return value.trim().toLowerCase().replace(/\s/g, "-");
+      // .replace(/^[a-zA-Z\d\s]+/g, "-")
     } else {
       return "";
     }

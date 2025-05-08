@@ -20,7 +20,6 @@ function App() {
       let char = Math.floor(Math.random() * string.length + 1);
       pass += string.charAt(char);
     }
-    console.log(pass)
     setPassword(pass)
   },  [length, numberAllowed, charAllowed, setPassword]);
 

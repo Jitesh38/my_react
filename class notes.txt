@@ -1,0 +1,7 @@
+Redux is independent state-management library
+
+
+Redux-toolkit   => repeat (13:00)
+
+
+React environment variable should have prefix of : REACT_VARIABLE_NAME
